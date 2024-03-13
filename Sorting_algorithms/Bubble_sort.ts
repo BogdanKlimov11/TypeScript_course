@@ -1,22 +1,14 @@
-// Пузырьковая сортировка
 function bubble_sort(arr: number[]): void {
-    const n: number = arr.length;
-    // Проходим по всем элементам массива
-    for (let i: number = 0; i < n; i++) {
-        // Установим флаг, который будет служить индикатором, были ли какие-либо обмены в этой итерации
-        let swapped: boolean = false;
-        // Проходим по массиву сравнивая каждую пару соседних элементов
-        // и меняем их местами, если они находятся в неправильном порядке
-        for (let j: number = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                // Обмен значениями
-                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+    let n: number = arr.length;
+    let swapped: boolean;
+    do {
+        swapped = false;
+        for (let i: number = 0; i < n - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
                 swapped = true;
             }
         }
-        // Если в этой итерации не было ни одного обмена, то массив уже отсортирован
-        if (!swapped) {
-            break;
-        }
-    }
+        n--;
+    } while (swapped);
 }
